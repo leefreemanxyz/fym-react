@@ -1,6 +1,6 @@
 import { CALL_API, CREATE } from '../../middleware/api'
 
-export default (pairs) => {
+export default (pairs, batchId) => {
   console.log('submitting in action')
   console.log(pairs)
   return {
@@ -8,7 +8,8 @@ export default (pairs) => {
       service: 'pairs',
       method: CREATE,
       authenticate: true,
-      params:{ pairs: pairs },
+      params:{ pairs: pairs,
+                batch: batchId},
       //id: userId,
     }
   }
