@@ -20,6 +20,7 @@ export const API_READY = 'API_READY'
 export const API_ERROR = 'API_ERROR'
 
 const processRequest = (action, service, method, params, id) => {
+  console.log('request')
   switch (method) {
     case FIND :
       console.debug(params)
@@ -29,6 +30,7 @@ const processRequest = (action, service, method, params, id) => {
       return service.get(id, params)
 
     case CREATE :
+      console.log('create being called')
       return service.create(params)
 
     case UPDATE :

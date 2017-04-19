@@ -1,14 +1,27 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import subscribeToUsers from '../../actions/user/subscribe'
-import generatePairs from '../../actions/pairs.js'
+import subscribeToPairs from '../../actions/pairs/subscribe'
+import generatePairs from '../../actions/pairs/generatePairs.js'
+import submitPairs from '../../actions/pairs/submit.js'
 import User from './User'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
 class UsersIndex extends PureComponent {
+  constructor(){
+    super()
+    this.state={
+      pairs: []
+    }
+  }
   componentWillMount(){
     this.props.subscribeToUsers()
+    this.props.subscribeToPairs()
+  }
+  generateAndSubmitPairs(){
+    console.log(submitPairs(generatePairs(this.props.users)))
+    this.props.submitPairs(generatePairs(this.props.users))
   }
 
   render(){
@@ -21,7 +34,8 @@ class UsersIndex extends PureComponent {
           <RaisedButton
             label="Generate pairs"
             primary={true}
-            onClick={() => {generatePairs(users)}}
+            onClick={this.generateAndSubmitPairs.bind(this)}
+            //onClick={() => {generatePairs(users)}}
             />
         </div>
         <div ref="users" style={{ maxHeight: '80%', overflowY: 'auto', width: '100%'}}>
@@ -37,4 +51,4 @@ class UsersIndex extends PureComponent {
 }
 
 const mapStateToProps = ({ users }) => ({ users })
-export default connect(mapStateToProps, { subscribeToUsers, generatePairs })(UsersIndex)
+export default connect(mapStateToProps, { subscribeToUsers, subscribeToPairs, submitPairs })(UsersIndex)

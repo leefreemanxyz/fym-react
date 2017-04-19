@@ -4,6 +4,7 @@ export default (users) => {
   let rounds = new Array(matchedRounds).fill([])
   const roundsList = recursive(matchedRounds, firstRound, rounds)
   console.log(roundsList)
+  return roundsList
 }
 
 const recursive = (matchedRounds, currentRound, rounds) => {
