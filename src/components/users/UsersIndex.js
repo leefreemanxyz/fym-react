@@ -11,7 +11,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 class UsersIndex extends PureComponent {
   componentWillMount(){
     this.props.subscribeToUsers()
-    this.props.subscribeToPairs()
+    //this.props.subscribeToPairs()
   }
   generateAndSubmitPairs(){
     console.log(submitPairs(generatePairs(this.props.users)))
@@ -29,7 +29,6 @@ class UsersIndex extends PureComponent {
             label="Generate pairs"
             primary={true}
             onClick={this.generateAndSubmitPairs.bind(this)}
-            //onClick={() => {generatePairs(users)}}
             />
         </div>
         <div ref="users" style={{ maxHeight: '80%', overflowY: 'auto', width: '100%'}}>

@@ -1,5 +1,5 @@
 export default (users) => {
-  let matchedRounds = users.length - 1
+  let matchedRounds = users.length - 2
   let firstRound = JSON.parse(JSON.stringify(users))
   let rounds = new Array(matchedRounds).fill([])
   const roundsList = recursive(matchedRounds, firstRound, rounds)

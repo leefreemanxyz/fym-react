@@ -20,17 +20,14 @@ export const API_READY = 'API_READY'
 export const API_ERROR = 'API_ERROR'
 
 const processRequest = (action, service, method, params, id) => {
-  console.log('request')
   switch (method) {
     case FIND :
-      console.debug(params)
       return service.find(params)
 
     case GET :
       return service.get(id, params)
 
     case CREATE :
-      console.log('create being called')
       return service.create(params)
 
     case UPDATE :
@@ -65,12 +62,11 @@ export default store => next => action => {
     return api.authenticate()
       .then(() => processRequest(action, apiService, method, params, id)
         .then((result) => {
-          next({ type: API_READY })
-
-          return next({
+          next({
             type,
             payload: result.data
           })
+          return next({ type: API_READY })
         }))
       .catch((error) => {
         console.log('there has been an error')
