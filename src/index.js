@@ -7,6 +7,7 @@ import store, { history } from './store'
 import App from './App'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
+import UsersIndex from './components/users/UsersIndex.js'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -15,6 +16,7 @@ ReactDOM.render(
         <IndexRoute component={SignUp} />
         <Route path="/sign-up" component={SignUp} />
         <Route path="/sign-in" component={SignIn} />
+        <Route path="/users" component={UsersIndex} />
       </Route>
     </Router>
   </Provider>,

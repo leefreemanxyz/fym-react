@@ -7,6 +7,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/theme'
 import './App.sass'
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 class App extends PureComponent {
   static childContextTypes = {
