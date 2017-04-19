@@ -10,13 +10,13 @@ class User extends PureComponent {
 
   render(){
     const {user, currentUser} = this.props
-    
+
     return(
       <div className="user">
       <p>{user.name}</p>
         {currentUser.admin && <RaisedButton
           onClick={() => {this.props.makeAdmin(this.props.user._id, !this.props.user.admin)}}
-          label={user.admin?"Remove Admin":"Make Admin"}
+          label={user.admin?"":"Make Admin"}
           primary={user.admin?false:true} />}
       </div>
     )
