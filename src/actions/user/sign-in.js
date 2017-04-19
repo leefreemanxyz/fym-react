@@ -8,6 +8,7 @@ const users = api.service('users')
 export default (user) => {
   return (dispatch) =>{
     console.log('logging in user...')
+    console.log(user)
     api.authenticate(user)
     .then((result) => {
       console.log('user successfully logged in')
@@ -15,8 +16,7 @@ export default (user) => {
       history.push('/')
     })
     .catch((error) => {
-      console.error('oops there has been an error')
-      console.error(error)
+      console.error('oops there has been an error', error)
     })
   }
 }
