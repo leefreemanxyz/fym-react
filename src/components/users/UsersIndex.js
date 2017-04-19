@@ -9,12 +9,6 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
 class UsersIndex extends PureComponent {
-  constructor(){
-    super()
-    this.state={
-      pairs: []
-    }
-  }
   componentWillMount(){
     this.props.subscribeToUsers()
     this.props.subscribeToPairs()
