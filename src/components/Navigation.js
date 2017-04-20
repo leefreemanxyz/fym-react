@@ -11,7 +11,7 @@ import FlatButton from 'material-ui/FlatButton'
 import { history } from '../store'
 import {palette} from '../assets/styles/theme'
 
-import {ROOT_PATH, USER_INDEX_PATH, MATCHES_PATH, BATCHES_PATH} from '../routes'
+import {ROOT_PATH, USER_INDEX_PATH, MATCHES_PATH, BATCHES_PATH, MY_PAIRS_PATH} from '../routes'
 
 export class Navigation extends PureComponent {
   constructor(){
@@ -42,7 +42,8 @@ export class Navigation extends PureComponent {
     this.props.signOut()
   }
   render(){
-    const {signedIn} = this.props
+    const {signedIn, currentUser} = this.props
+
     return(
       <div>
       <AppBar title="Find Your Match"
@@ -59,22 +60,22 @@ export class Navigation extends PureComponent {
             onRequestChange={this.toggleMenu.bind(this)}
              open={this.state.open}>
             <div style={{paddingTop: 40}}>
-              <Link to={ROOT_PATH}
+              <Link to={MY_PAIRS_PATH}
                 onTouchTap={this.toggleMenu.bind(this)}>
-                <MenuItem>Home</MenuItem>
+                <MenuItem>My Pairs</MenuItem>
               </Link>
-              <Link to={USER_INDEX_PATH}
+              {currentUser.admin && <Link to={USER_INDEX_PATH}
                 onTouchTap={this.toggleMenu.bind(this)}>
                 <MenuItem>Users</MenuItem>
-              </Link>
-              <Link to={MATCHES_PATH}
+              </Link>}
+              {currentUser.admin && <Link to={MATCHES_PATH}
                 onTouchTap={this.toggleMenu.bind(this)}>
                 <MenuItem>Matches</MenuItem>
-              </Link>
-              <Link to={BATCHES_PATH}
+              </Link>}
+              {currentUser.admin && <Link to={BATCHES_PATH}
                 onTouchTap={this.toggleMenu.bind(this)}>
                 <MenuItem>Batches</MenuItem>
-              </Link>
+              </Link>}
             </div>
           </Drawer>
         </div>
@@ -82,8 +83,12 @@ export class Navigation extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({
-  signedIn: (!!currentUser && !!currentUser._id)
-})
+const mapStateToProps = ({ currentUser }) => {
+  return {
+    signedIn: (!!currentUser && !!currentUser._id),
+    currentUser,
+
+  }
+}
 
 export default connect(mapStateToProps, { signOut })(Navigation)
