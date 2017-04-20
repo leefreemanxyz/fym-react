@@ -27,10 +27,10 @@ class Batch extends PureComponent {
         return true
       }
     })
-    console.log(pairs)
+    if(pairs.length % 2 == 0){
     this.props.submitPairs(generatePairs(pairs), this.props.batch._id)
-  }
-  addToBatch(batchId,userId){
+  }}
+  addToBatch(batchId,userId, action){
     this.props.addToBatch(batchId, userId, action)
   }
 
@@ -44,6 +44,7 @@ class Batch extends PureComponent {
           <RaisedButton
             label="Generate pairs"
             primary={true}
+
             onClick={this.generateAndSubmitPairs.bind(this)}
             />
         </div>
@@ -56,6 +57,7 @@ class Batch extends PureComponent {
         </div>
       <div>
       <div><h3>Users in this batch</h3>
+      <p>You must have an even number of students to make pairs. Add 'Not a user' if you're one short.</p>
       {users.map((user, index)=>{
         if(batch.students.indexOf(user._id) == -1){
           return null

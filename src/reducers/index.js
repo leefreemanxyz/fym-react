@@ -3,6 +3,8 @@ import currentUser from './currentUser'
 import pairs from './pairs'
 import loading from './loading'
 import batches from './batches'
+import publishedPairs from './publishedPairs'
+
 
 module.exports = {
   currentUser,
@@ -10,4 +12,5 @@ module.exports = {
   pairs,
   loading,
   batches,
+  publishedPairs,
 }

@@ -1,5 +1,6 @@
 import API from '../../lib/api'
 import { history } from '../../store'
+import {BATCHES_PATH, MY_PAIRS_PATH} from '../../routes'
 
 export const USER_SIGNED_IN = 'USER_SIGNED_IN'
 const api = new API()
@@ -13,7 +14,7 @@ export default (user) => {
     .then((result) => {
       console.log('user successfully logged in')
       dispatch(signedInUser(result))
-      history.push('/')
+      history.push(MY_PAIRS_PATH)
     })
     .catch((error) => {
       console.error('oops there has been an error', error)

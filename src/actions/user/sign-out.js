@@ -1,5 +1,6 @@
 import API from '../../lib/api'
 import { history } from '../../store'
+import {USER_SIGN_IN_PATH} from '../../routes'
 
 export const USER_SIGNED_OUT = 'USER_SIGNED_OUT'
 
@@ -11,7 +12,7 @@ export default (user) => {
     console.log('logging out user...')
     api.signOut()
     dispatch(signedOutUser())
-    history.push('/')
+    history.push(USER_SIGN_IN_PATH)
 
   }
 }
