@@ -7,8 +7,9 @@ export default (batch) => {
       service: 'batches',
       method: CREATE,
       authenticate: true,
-      params: {startDate: batch.startDate,
-                endDate: batch.endDate}
+      params: {name: batch.name,
+               startDate: batch.startDate,
+               endDate: batch.endDate}
     }
   }
 }

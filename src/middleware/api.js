@@ -65,15 +65,17 @@ export default store => next => action => {
           next({
             type,
             payload: result.data
-          })
+          }
+        )
+
           return next({ type: API_READY })
         }))
       .catch((error) => {
         console.log('there has been an error')
         console.error(error)
-
+        if(error.code === 401){
         history.replace(USER_SIGN_IN_PATH)
-
+}
         return next({
           type: API_ERROR,
           payload: error

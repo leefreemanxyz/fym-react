@@ -24,13 +24,7 @@ class UsersIndex extends PureComponent {
 
     return (
       <div style={{ padding:24, paddingBottom: 86, width: '100%'}}>
-        <div>
-          <RaisedButton
-            label="Generate pairs"
-            primary={true}
-            onClick={this.generateAndSubmitPairs.bind(this)}
-            />
-        </div>
+        
         <div ref="users" style={{ maxHeight: '80%', overflowY: 'auto', width: '100%'}}>
           {this.props.users.map((user, index) => {
             return (

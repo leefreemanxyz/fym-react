@@ -18,6 +18,7 @@ class BatchesIndex extends PureComponent {
   constructor(){
     super()
     this.state = {
+      name: "",
       startDate: null,
       endDate: null
     }
@@ -33,6 +34,7 @@ class BatchesIndex extends PureComponent {
   }
   createBatch(){
     const batch = {
+      name: this.state.name,
       startDate: this.state.startDate,
       endDate: this.state.endDate
     }
@@ -43,6 +45,11 @@ class BatchesIndex extends PureComponent {
   handleStartChange = (event, date) => {
     this.setState({
       startDate: date,
+    });
+  };
+  handleNameChange = (event, name) => {
+    this.setState({
+      name: name,
     });
   };
   handleEndChange = (event, date) => {
@@ -57,6 +64,7 @@ class BatchesIndex extends PureComponent {
     return (
       <div style={{ padding:24, paddingBottom: 86, width: '100%'}}>
         <div>
+          <TextField hintText="Name of this batch" onChange={this.handleNameChange}/>
           <DatePicker hintText="Start Date" onChange={this.handleStartChange} />
           <DatePicker hintText="End Date" onChange={this.handleEndChange} />
           <RaisedButton
@@ -73,6 +81,7 @@ class BatchesIndex extends PureComponent {
                   zDepth={1}
                   style={{ padding:'12px 24px'}}>
                   <Link to={`/batches/${batch._id}`}>
+                    <p>{batch.name}</p>
                   <p>{batch.startDate}</p>
                   <p>{batch.endDate}</p></Link>
               </Paper>
