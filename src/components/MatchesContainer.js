@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import subscribeToPairs from '../actions/pairs/subscribe'
+import subscribeToBatches from '../actions/batches/subscribe'
 import subscribeToUsers from '../actions/user/subscribe'
 import Pair from './Pair'
 import TextField from 'material-ui/TextField'
@@ -13,7 +14,9 @@ import DailyPairs from './DailyPairs'
 class MatchesContainer extends PureComponent {
   componentWillMount(){
     this.props.subscribeToUsers()
+    this.props.subscribeToBatches()
     this.props.subscribeToPairs()
+
   }
   render(){
     const {pairs} = this.props
@@ -35,4 +38,4 @@ class MatchesContainer extends PureComponent {
 }
 
 const mapStateToProps = ({ pairs, loading, users }) => ({ pairs, loading, users })
-export default connect(mapStateToProps, { subscribeToPairs, subscribeToUsers })(MatchesContainer)
+export default connect(mapStateToProps, { subscribeToPairs, subscribeToUsers, subscribeToBatches })(MatchesContainer)

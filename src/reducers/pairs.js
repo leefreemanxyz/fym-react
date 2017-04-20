@@ -8,9 +8,12 @@ import {
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case SUBSCRIBED_TO_PAIRS_SERVICE :
-    console.log('payload')
-    console.log(payload)
-      return [].concat(payload[0].pairs)
+
+    if(payload.length != 0){
+      return [].concat(payload)
+    } else {
+        return state
+      }
 
     case PAIR_CREATED :
       const newPair = Object.assign({}, payload)

@@ -11,7 +11,7 @@ import FlatButton from 'material-ui/FlatButton'
 import { history } from '../store'
 import {palette} from '../assets/styles/theme'
 
-import {ROOT_PATH, USER_INDEX_PATH, MATCHES_PATH} from '../routes'
+import {ROOT_PATH, USER_INDEX_PATH, MATCHES_PATH, BATCHES_PATH} from '../routes'
 
 export class Navigation extends PureComponent {
   constructor(){
@@ -70,6 +70,10 @@ export class Navigation extends PureComponent {
               <Link to={MATCHES_PATH}
                 onTouchTap={this.toggleMenu.bind(this)}>
                 <MenuItem>Matches</MenuItem>
+              </Link>
+              <Link to={BATCHES_PATH}
+                onTouchTap={this.toggleMenu.bind(this)}>
+                <MenuItem>Batches</MenuItem>
               </Link>
             </div>
           </Drawer>

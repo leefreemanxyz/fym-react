@@ -16,7 +16,7 @@ class User extends PureComponent {
       <p>{user.name}</p>
         {currentUser.admin && <RaisedButton
           onClick={() => {this.props.makeAdmin(this.props.user._id, !this.props.user.admin)}}
-          label={user.admin?"":"Make Admin"}
+          label={user.admin?"Remove Admin":"Make Admin"}
           primary={user.admin?false:true} />}
       </div>
     )
