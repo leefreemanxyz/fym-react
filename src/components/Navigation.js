@@ -68,10 +68,6 @@ export class Navigation extends PureComponent {
                 onTouchTap={this.toggleMenu.bind(this)}>
                 <MenuItem>Users</MenuItem>
               </Link>}
-              {currentUser.admin && <Link to={MATCHES_PATH}
-                onTouchTap={this.toggleMenu.bind(this)}>
-                <MenuItem>Matches</MenuItem>
-              </Link>}
               {currentUser.admin && <Link to={BATCHES_PATH}
                 onTouchTap={this.toggleMenu.bind(this)}>
                 <MenuItem>Batches</MenuItem>

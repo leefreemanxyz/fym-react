@@ -58,7 +58,6 @@ class BatchesIndex extends PureComponent {
     });
   };
   render(){
-    console.log(this.props)
     const {batches} = this.props
 
     return (
